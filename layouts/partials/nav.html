@@ -2,10 +2,17 @@
 {{ $data := index .Site.Data .Site.Language.Lang }}
 <nav id="nav">
     <ul class="links">
-        <li class="active"><a href='{{ "/" | relLangURL }}'>{{ .Site.Title }}</a></li>
+        {{ $current := . }}
+        {{ range .Site.Menus.nav }}
+        {{ $active := or ($current.IsMenuCurrent "nav" .) ($current.HasMenuCurrent "nav" .) }}
+        {{ $active = or $active (eq .Name $current.Section) }}
+        <li {{if $active}}class="active"{{end}}><a href='{{ .URL | relLangURL }}'> {{ .Title }} </a></li>
+        {{ end }}
+
         {{ with $data.contactinfo }}
         <li><a href='{{ "#footer" | relLangURL }}'>{{ i18n "NAV_CONTACT" . }}</a></li>
         {{ end }}
+        
         {{ if .IsTranslated }}
         {{ range .AllTranslations }}
         <li {{if eq ($.Site.Language) (.Language)}}class="active"{{end}}><a href='{{ .Permalink }}'>{{ .Language.LanguageName }}</a></li>
