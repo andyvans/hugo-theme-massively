@@ -2,6 +2,7 @@
 {{ $data := .siteData }}
 <section class="posts">
     {{ range .posts.Pages }}
+    {{ if ne .Params.excludeFromList "true" }}
     <article>
         <header>
             {{ if not .Date.IsZero }}
@@ -21,5 +22,6 @@
             <li><a href="{{ .Permalink }}" class="button">{{ $data.post.linktext }}</a></li>
         </ul>
     </article>
+    {{ end }}
     {{ end }}
 </section>
