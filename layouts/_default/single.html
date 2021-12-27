@@ -16,12 +16,11 @@
                                 {{ if not .Date.IsZero }}
                                 <span class="date">{{ .Date.Format (.Site.Params.DateFormat | default "January 2, 2006") }}</span>
                                 {{ end }}
+                                {{ if .Params.image }}
+                                <div class="image main"><img src="{{ .Params.image | relURL }}" alt="" /></div>
+                                {{ end }}
                                 <h1>{{ .Title }}</h1>
-                                <p>{{ .Description }}</p>
-                            </header>
-                            {{ if .Params.image }}
-                            <div class="image main"><img src="{{ .Params.image | relURL }}" alt="" /></div>
-                            {{ end }}
+                            </header>                            
                             
                             {{ if .Params.Author }}
                             <div class="post-author-box">
