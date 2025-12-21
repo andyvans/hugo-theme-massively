@@ -12,6 +12,23 @@
 		z-index: 1;
 		overflow: hidden;
 
+		// Fixed background pseudo-element to prevent jumping
+		&::before {
+			content: '';
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			background-color:		_palette(wrapper-bg);
+			background-image:		url('../../images/overlay.png'),	linear-gradient(0deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1)),	url('../../images/bg.jpg');
+			background-size:		auto,								auto,														cover;
+			background-position:	center,								center,														center center;
+			background-repeat:		repeat,								no-repeat,													no-repeat;
+			background-attachment:	fixed,								fixed,														fixed;
+			z-index: -1;
+		}
+
 		> .bg {
 			position: absolute;
 			top: 0;
@@ -24,7 +41,7 @@
 			background-position:	center,								center,														top center;
 			background-repeat:		repeat,								no-repeat,													no-repeat;
 			background-attachment:	scroll,								scroll,														scroll;
-			z-index: -1;
+			z-index: -1;			
 
 			&.fixed {
 				position: fixed;
@@ -57,8 +74,26 @@
 		}
 
 		@include orientation(portrait) {
+			&::before {
+				background-size:	auto,								auto,														auto 175%;
+			}
+			
 			> .bg {
 				background-size:	auto,								auto,														auto 175%;
+			}
+		}
+
+		// Responsive adjustments for pseudo-element background
+		@include breakpoint('<=large') {
+			&::before {
+				background-size:	auto,								auto,														cover;
+			}
+		}
+
+		@include breakpoint('<=medium') {
+			&::before {
+				background-size:	auto,								auto,														auto 150%;
+				background-position: center,						center,														center center;
 			}
 		}
 	}

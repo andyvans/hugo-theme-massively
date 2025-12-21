@@ -84,20 +84,19 @@
 
 			};
 
-			// Disable parallax on ..
-				if (browser.name == 'ie'			// IE
-				||	browser.name == 'edge'			// Edge
-				||	window.devicePixelRatio > 1		// Retina/HiDPI (= poor performance)
-				||	browser.mobile)					// Mobile devices
-					off();
+			// Disable parallax by default to use fixed background pseudo-element
+			// This prevents background jumping during scroll
+			off();
 
-			// Enable everywhere else.
-				else {
-
-					breakpoints.on('>large', on);
-					breakpoints.on('<=large', off);
-
-				}
+			// Optionally enable parallax on very large screens if desired
+			// (commented out to prevent background jumping)
+			// if (browser.name != 'ie'
+			// &&	browser.name != 'edge'
+			// &&	window.devicePixelRatio <= 1
+			// &&	!browser.mobile) {
+			//	breakpoints.on('>xlarge', on);
+			//	breakpoints.on('<=xlarge', off);
+			// }
 
 		});
 
