@@ -125,7 +125,7 @@
 	}
 
 	code {
-		border-radius: _size(border-radius);
+		border-radius: 0.4rem;
 		border: solid 2px;
 		font-family: _font(family-fixed);
 		font-size: 0.9rem;
@@ -133,13 +133,27 @@
 		padding: 0.25rem 0.65rem;
 	}
 
+	.highlight {
+		border-radius: 0.4rem;
+		margin: 0 0 _size(element-margin) 0;
+		overflow: hidden;
+
+		pre {
+			margin-bottom: 0;
+		}
+	}
+
 	pre {
 		-webkit-overflow-scrolling: touch;
+		border: solid 1px;
+		border-radius: 0.4rem;
 		font-family: _font(family-fixed);
 		font-size: 0.9rem;
 		margin: 0 0 _size(element-margin) 0;
+		overflow: hidden;
 
 		code {
+			border: 0;
 			display: block;
 			line-height: 1.75;
 			padding: 1rem 1.5rem;
@@ -202,6 +216,10 @@
 
 		code {
 			background: _palette($p, border-bg);
+			border-color: _palette($p, border);
+		}
+
+		pre {
 			border-color: _palette($p, border);
 		}
 
