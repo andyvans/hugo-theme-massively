@@ -78,6 +78,7 @@
 	}
 
 	a.image {
+		border-bottom: 0;
 		overflow: hidden;
 
 		img {
@@ -89,4 +90,19 @@
 				@include vendor('transform', 'scale(1.05)');
 			}
 		}
+	}
+
+	figure {
+		img {
+			border-radius: 0.4rem;
+		}
+	}
+
+	article {
+		img {
+			border-radius: 0.4rem;
+		}
+	}
+	div.img {
+		border-radius: 0.4rem;		
 	}

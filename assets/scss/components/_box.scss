@@ -8,9 +8,12 @@
 
 	.box {
 		border-radius: _size(border-radius);
-		border: solid 2px;
-		margin-bottom: _size(element-margin);
+		margin-bottom: (_size(element-margin) * 0.5);
 		padding: 1.5rem;
+
+		a {
+			border-bottom: 0;
+		}
 
 		> :last-child,
 		> :last-child > :last-child,
